@@ -1,0 +1,114 @@
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #0c0e12;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    text-align: center;
+    background: #1e1f26;
+    padding: 1.5rem;
+  }
+  
+  .logo {
+    width: 120px;
+    margin-bottom: 1rem;
+  }
+  
+  #filtros {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    background: #2b2d3c;
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  #filtros input,
+  #filtros select,
+  #filtros button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #007e6d;
+    color: white;
+    transition: background 0.3s ease;
+  }
+  
+  #filtros button:hover {
+    background-color: #63b3ed;
+  }
+  
+  #mapa {
+    margin: 1rem;
+    border: 2px solid #444;
+    border-radius: 10px;
+  }
+  
+  #resultados {
+    padding: 1rem;
+  }
+  
+  .mision {
+    background: #1a1a2e;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+    border-left: 5px solid #00aaff;
+  }
+  
+  .mision a {
+    color: #00c3ff;
+    text-decoration: none;
+  }
+  
+  #mision a:hover {
+    text-decoration: underline;
+  }
+  
+  #juego {
+    text-align: center;
+    margin: 2rem 0;
+  }
+  
+  canvas {
+    border: 2px solid #fff;
+    background: #000;
+    margin-top: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    #filtros {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    canvas {
+      width: 90%;
+      height: auto;
+    }
+  }
+
+  header {
+    background-image: url('avion.jpg'); /* Cambia esta ruta por la URL o ubicación de tu imagen */
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el área */
+    background-position: center; /* Centra la imagen */
+    color: white; /* Texto en blanco para destacar sobre el fondo */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1.logo {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Efecto de sombra para resaltar el texto */
+  }
+  
+  p.subtitulo {
+    font-size: 1.2em;
+    margin-top: 10px;
+  }
+  

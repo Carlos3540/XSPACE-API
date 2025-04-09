@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Espacial SpaceX</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Leaflet CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Fuente futurista -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+  <header>
+    <img src="logo.png" alt="Logo SpaceX" class="logo" />
+    <h1>🚀 Misiones Espaciales de SpaceX</h1>
+    <p>Explora todas las misiones, filtra por año, éxito y tipo</p>
+
+  </header>
+
+  <section id="filtros">
+    <label for="anio">🗓 Año:</label>
+    <input type="number" id="anio" placeholder="Ej: 2020" />
+
+    <label for="estado">📊 Estado:</label>
+    <select id="estado">
+      <option value="">Todos</option>
+      <option value="true">Exitosas</option>
+      <option value="false">Fallidas</option>
+    </select>
+ 
+    <button onclick="cargarMisiones()">Buscar</button>
+  </section>
+
+  <section id="mapa" style="height: 400px;"></section>
+  <section id="juego">
+    <h2>🎮 Juego Interactivo: ¡Atrapa los Cohetes!</h2>
+    <canvas id="gameCanvas" width="300" height="300"></canvas>
+    <p id="score">Puntuación: 0</p>
+  </section>
+  <section id="resultados">
+    <h2>📋 Misiones encontradas</h2>
+    <div id="misiones"></div>
+  </section>
+
+ 
+
+  <script src="app.js"></script>
+  <script src="juego.js"></script>
+</body>
+</html> 
