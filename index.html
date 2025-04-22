@@ -19,23 +19,35 @@
     <img src="logo.png" alt="Logo SpaceX" class="logo" />
     <h1>🚀 Misiones Espaciales de SpaceX</h1>
     <p>Explora todas las misiones, filtra por año, éxito y tipo</p>
-
+  
+    <div id="filtros" style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin-top: 1rem;">
+      <label for="anio">🗓 Año:</label>
+      <input type="number" id="anio" class="filtro-estilo" placeholder="Ej: 2020" />
+  
+      <label for="estado">📊 Estado:</label>
+      <select id="estado" class="filtro-estilo">
+        <option value="">Todos</option>
+        <option value="true">Exitosas</option>
+        <option value="false">Fallidas</option>
+      </select>
+  
+      <label for="buscador">🔎 Buscar misión:</label>
+      <input type="text" id="buscador" class="filtro-estilo" placeholder="Nombre de misión" />
+  
+      <button onclick="cargarMisiones()" class="filtro-boton">Buscar</button>
+    </div>
   </header>
 
-  <section id="filtros">
-    <label for="anio">🗓 Año:</label>
-    <input type="number" id="anio" placeholder="Ej: 2020" />
-
-    <label for="estado">📊 Estado:</label>
-    <select id="estado">
-      <option value="">Todos</option>
-      <option value="true">Exitosas</option>
-      <option value="false">Fallidas</option>
-    </select>
- 
-    <button onclick="cargarMisiones()">Buscar</button>
-  </section>
-
+  <nav id="menuPrincipal">
+    <button onclick="mostrarSeccion('inicio')">Inicio</button>
+    <button onclick="mostrarSeccion('mapa')">Mapa</button>
+    <button onclick="mostrarSeccion('juego')">Juego</button>
+    <button onclick="mostrarSeccion('favoritos')">Favoritos</button>
+    <button onclick="mostrarSeccion('galeria')">Galería</button>
+    <button onclick="mostrarSeccion('contacto')">Contacto</button>
+  </nav>
+  
+  
   <section id="mapa" style="height: 400px;"></section>
   <section id="juego">
     <h2>🎮 Juego Interactivo: ¡Atrapa los Cohetes!</h2>
