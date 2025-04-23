@@ -1,117 +1,38 @@
 body {
-    font-family: 'Orbitron', sans-serif;
-    background-color: #0c0e12;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header {
-    text-align: center;
-    background: #1e1f26;
-    padding: 1.5rem;
-  }
-  
-  .logo {
-    width: 120px;
-    margin-bottom: 1rem;
-  }
-  
-  #filtros {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    background: #2b2d3c;
-    padding: 1rem;
-    flex-wrap: wrap;
-  }
-  
-  #filtros input,
-  #filtros select,
-  #filtros button {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: none;
-    background-color: #007e6d;
-    color: white;
-    transition: background 0.3s ease;
-  }
-  
-  #filtros button:hover {
-    background-color: #63b3ed;
-  }
-  
-  #mapa {
-    margin: 1rem;
-    border: 2px solid #444;
-    border-radius: 10px;
-  }
-  
-  #resultados {
-    padding: 1rem;
-  }
-  
-  .mision {
-    background: #1a1a2e;
-    padding: 1rem;
-    margin: 1rem 0;
-    border-radius: 10px;
-    border-left: 5px solid #00aaff;
-  }
-  
-  .mision a {
-    color: #00c3ff;
-    text-decoration: none;
-  }
-  
-  #mision a:hover {
-    text-decoration: underline;
-  }
-  
-  #juego {
-    text-align: center;
-    margin: 2rem 0;
-  }
-  
-  canvas {
-    border: 2px solid #fff;
-    background: #000;
-    margin-top: 1rem;
-  }
-  
-  @media (max-width: 768px) {
-    #filtros {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    canvas {
-      width: 90%;
-      height: auto;
-    }
-  }
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0c0e12;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
 
-  header {
-    background-image: url('avion.jpg'); /* Cambia esta ruta por la URL o ubicación de tu imagen */
-    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el área */
-    background-position: center; /* Centra la imagen */
-    color: white; /* Texto en blanco para destacar sobre el fondo */
-    padding: 20px;
-    text-align: center;
-  }
-  
-  h1.logo {
-    font-size: 2.5em;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Efecto de sombra para resaltar el texto */
-  }
-  
-  p.subtitulo {
-    font-size: 1.2em;
-    margin-top: 10px;
-  }
-  /* Estilos generales del menú */
+header {
+  background-image: url('avion.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 1rem;
+}
+
+h1.logo {
+  font-size: 2.5em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+p.subtitulo {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #00e1ff;
+}
+
 #menuPrincipal {
   display: flex;
   flex-wrap: wrap;
@@ -127,8 +48,7 @@ body {
   max-width: 95%;
 }
 
-/* Botones del menú */
-#menuPrincipal button {
+#menuPrincipal button, #menuPrincipal a {
   background: radial-gradient(circle, rgb(0, 209, 181) 0%, #00d39e 100%);
   color: #fff;
   font-weight: 600;
@@ -139,17 +59,147 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 255, 255, 0.25);
+  text-decoration: none;
+  text-align: center;
 }
 
-#menuPrincipal button:hover {
+#menuPrincipal button:hover, #menuPrincipal a:hover {
   background: #fff;
-  color: #00dabd;
+  color: #0095da;
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 0 20px #00e1ff;
 }
 
-/* RESPONSIVO */
+#filtros {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  background: #2b2d3c;
+  padding: 1rem;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
+}
+
+#filtros input,
+#filtros select,
+#filtros button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #007e6d;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+#filtros button:hover {
+  background-color: #63b3ed;
+}
+
+#mapa {
+  margin: 1rem;
+  border: 3px solid #00c3ff;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+#resultados {
+  padding: 1rem;
+}
+
+.misiones {
+  background: radial-gradient(ellipse at top left, #0a0f2c, #10162b 70%);
+  background-image: url('/mnt/data/529d7865-48ec-4f45-857d-61b629f3e622.png');
+  background-size: cover;
+  background-position: center;
+  padding: 1.5rem;
+  margin: 1rem auto;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  border: 2px solid #00ffe7;
+  max-width: 600px;
+  color: #e0f7ff;
+  backdrop-filter: blur(4px);
+}
+
+.misiones::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 150, 255, 0.1));
+  mix-blend-mode: screen;
+  z-index: 0;
+}
+
+.misiones * {
+  position: relative;
+  z-index: 1;
+}
+
+.misiones h3 {
+  font-size: 1.4rem;
+  color: #00f7ff;
+  margin-bottom: 10px;
+}
+
+.misiones p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #b0eaff;
+}
+
+.misiones a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #72f2ff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.misiones a:hover {
+  color: #00ffff;
+  text-shadow: 0 0 6px #00ffff;
+}
+
+.misiones::after {
+  content: "🛰️";
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 4px cyan);
+}
+
+#juego {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+canvas {
+  border: 2px solid #fff;
+  background: #000;
+  margin-top: 1rem;
+}
+
 @media (max-width: 768px) {
+  #filtros {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  canvas {
+    width: 90%;
+    height: auto;
+  }
+
   #menuPrincipal {
     flex-direction: column;
     align-items: center;
@@ -157,8 +207,16 @@ body {
     padding: 15px;
   }
 
-  #menuPrincipal button {
+  #menuPrincipal button, #menuPrincipal a {
     width: 90%;
     text-align: center;
   }
+}
+
+span.estrella {
+  transition: transform 0.3s ease;
+}
+
+span.estrella:hover {
+  transform: scale(1.2);
 }

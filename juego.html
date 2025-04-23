@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Escape</title>
+    <link rel="stylesheet" href="stylegame.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h1>🚀 Rocket SpaceX</h1>
+    <div id="score">Puntuación: 0</div>
+    <canvas id="gameCanvas" width="320" height="600"></canvas>
+    
+    <div class="controls">
+        <input type="text" id="playerName" placeholder="Tu nombre">
+        <button id="saveScoreBtn" disabled>Guardar puntuación</button>
+        <button id="restartBtn">Reiniciar juego</button>
+    </div>
+    
+    <div id="status"></div>
+    
+    <div id="topScores">
+        <h3>🏆 Mejores Puntuaciones</h3>
+        <div id="topScoresList">
+            <p>Cargando mejores puntuaciones...</p>
+        </div>
+    </div>
+
+    <script type="module" src="juego.js"></script>
+</body>
+</html>

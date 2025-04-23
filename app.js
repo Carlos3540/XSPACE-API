@@ -5,14 +5,20 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapa);
 const launchpadsCache = {};
 const marcadoresActuales = [];
 
+// Favoritos desde localStorage
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
 async function cargarMisiones() {
   const anio = document.getElementById("anio").value;
   const estado = document.getElementById("estado").value;
+  const nombreInput = document.getElementById("buscador").value.trim().toLowerCase();
+
   const res = await fetch(apiURL);
   const data = await res.json();
 
-  const contenedor = document.getElementById("misiones");
+  const contenedor = document.getElementById("listaMisiones");
   contenedor.innerHTML = "";
+
   mapa.eachLayer((layer) => {
     if (layer instanceof L.Marker) mapa.removeLayer(layer);
   });
@@ -22,17 +28,32 @@ async function cargarMisiones() {
     const fecha = new Date(mision.date_utc);
     const cumpleAnio = !anio || fecha.getFullYear() == anio;
     const cumpleEstado = estado === "" || mision.success == (estado === "true");
+    const cumpleNombre = !nombreInput || mision.name.toLowerCase().includes(nombreInput);
 
-    if (cumpleAnio && cumpleEstado) {
-      const misionHTML = `
-        <li class="tarjeta-mision" data-nombre="${mision.name}">
-          <h3 class="nombre-mision">${mision.name}</h3>
-          <p><strong>Fecha:</strong> ${fecha.toLocaleDateString()}</p>
-          <p><strong>Éxito:</strong> ${mision.success ? "✅" : "❌"}</p>
-          <p><a href="${mision.links.webcast}" target="_blank">Ver Lanzamiento 🎥</a></p>
-        </li>
+    if (cumpleAnio && cumpleEstado && cumpleNombre) {
+      const esFavorita = favoritos.some(fav => fav.id === mision.id);
+
+      const li = document.createElement("li");
+      li.className = "tarjeta-mision";
+
+      li.innerHTML = `
+        <h3>${mision.name}</h3>
+        <p><strong>Fecha:</strong> ${fecha.toLocaleDateString()}</p>
+        <p><strong>Éxito:</strong> ${mision.success ? "✅" : "❌"}</p>
+        <p><a href="${mision.links.webcast}" target="_blank">Ver Lanzamiento 🎥</a></p>
       `;
-      contenedor.innerHTML += misionHTML;
+
+      // Estrellita
+      const estrella = document.createElement("span");
+      estrella.textContent = esFavorita ? "⭐" : "☆";
+      estrella.style.cursor = "pointer";
+      estrella.style.fontSize = "24px";
+      estrella.style.float = "right";
+      estrella.className = "estrella";
+      estrella.onclick = () => toggleFavorito(mision, estrella);
+
+      li.appendChild(estrella);
+      contenedor.appendChild(li);
 
       if (mision.launchpad) {
         if (launchpadsCache[mision.launchpad]) {
@@ -53,43 +74,30 @@ async function cargarMisiones() {
 function agregarMarcador(lugar, nombreMision) {
   const marcador = L.marker([lugar.latitude, lugar.longitude])
     .bindPopup(`<strong>${nombreMision}</strong><br>${lugar.name}`);
-
   marcador.addTo(mapa);
-  marcadoresActuales.push({ nombre: nombreMision.toLowerCase(), marcador });
+  marcadoresActuales.push(marcador);
 }
 
-function filtrarMisionesPorNombre() {
-  const input = document.getElementById('buscador').value.trim().toLowerCase();
-  const contenedor = document.getElementById('misiones');
-  const misiones = contenedor.getElementsByClassName('tarjeta-mision');
-
-  let coincidencias = 0;
-
-  for (let i = 0; i < misiones.length; i++) {
-    const mision = misiones[i];
-    const nombre = mision.getAttribute("data-nombre").toLowerCase();
-
-    if (input && nombre === input) {
-      mision.style.display = '';
-      coincidencias++;
-    } else {
-      mision.style.display = 'none';
-    }
+function toggleFavorito(mision, estrellaElemento) {
+  const index = favoritos.findIndex(fav => fav.id === mision.id);
+  if (index >= 0) {
+    favoritos.splice(index, 1); // Eliminar
+    estrellaElemento.textContent = "☆";
+  } else {
+    favoritos.push({
+      id: mision.id,
+      name: mision.name,
+      date: mision.date_utc,
+      success: mision.success,
+      webcast: mision.links.webcast
+    });
+    estrellaElemento.textContent = "⭐";
   }
+  localStorage.setItem("favoritos", JSON.stringify(favoritos));
+}
 
-  // Mostrar solo el marcador si hay coincidencia exacta
-  marcadoresActuales.forEach(obj => {
-    if (input && obj.nombre === input) {
-      mapa.addLayer(obj.marcador);
-    } else {
-      mapa.removeLayer(obj.marcador);
-    }
-  });
-
-  // Si no hay coincidencias, limpiar mapa
-  if (!input || coincidencias === 0) {
-    marcadoresActuales.forEach(obj => mapa.removeLayer(obj.marcador));
-  }
+function redirigir(pagina) {
+  window.location.href = pagina;
 }
 
 window.onload = cargarMisiones;

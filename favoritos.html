@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favoritos - SpaceX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0c0e12;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-image: url('avion.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 37vh;
+      width: 100%;
+      color: rgb(255, 255, 255);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      font-weight: bold;
+      text-align: center;
+      background: linear-gradient(270deg, #00c3ff, #8a2be2, #00c3ff);
+      background-size: 600% 600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: colorShift 6s ease infinite;
+      margin: 1rem auto 0 auto;
+      width: fit-content;
+    }
+
+    @keyframes colorShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    nav#menuPrincipal {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      background: #1e1f26;
+      padding: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      font-family: 'Orbitron', sans-serif;
+      padding: 10px 20px;
+      background: #00c3ff;
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    nav button:hover {
+      background: #8a2be2;
+      color: #fff;
+    }
+
+    #favoritos {
+      text-align: center;
+      padding: 20px;
+    }
+
+    ul#listaFavoritos {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tarjeta-mision {
+      background: #1a1a2e;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 15px auto;
+      max-width: 600px;
+      text-align: left;
+      box-shadow: 0 0 10px rgba(0, 195, 255, 0.3);
+    }
+
+    .tarjeta-mision h3 {
+      color: #00c3ff;
+    }
+
+    .tarjeta-mision a {
+      color: #a070ff;
+      text-decoration: none;
+    }
+
+    .tarjeta-mision a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo SpaceX" class="logo" />
+    <h1>⭐ Misiones Favoritas</h1>
+    <p>Aquí están tus misiones espaciales favoritas guardadas</p>
+  </header>
+
+  <nav id="menuPrincipal">
+    <button onclick="redirigir('index.html')">Inicio</button>
+    <button onclick="redirigir('favoritos.html')">Favoritos</button>
+    <button onclick="redirigir('galerias.html')">Galería</button>
+    <button onclick="redirigir('contacto.html')">Contacto</button>
+    <button onclick="redirigir('juego.html')">Juego</button>
+    <button onclick="redirigir('nosotros.html')">Nosotros</button>
+  </nav>
+
+  <section id="favoritos">
+    <h2>📋 Tus Misiones Favoritas</h2>
+    <ul id="listaFavoritos"></ul>
+  </section>
+
+  <script>
+    function redirigir(pagina) {
+      window.location.href = pagina;
+    }
+
+    function cargarFavoritos() {
+      const lista = document.getElementById("listaFavoritos");
+      lista.innerHTML = "";
+
+      const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+      if (favoritos.length === 0) {
+        lista.innerHTML = "<p>No tienes misiones favoritas aún.</p>";
+        return;
+      }
+
+      favoritos.forEach((mision) => {
+        const fecha = new Date(mision.date).toLocaleDateString();
+        const li = document.createElement("li");
+        li.className = "tarjeta-mision";
+        li.innerHTML = `
+          <h3>${mision.name}</h3>
+          <p><strong>Fecha:</strong> ${fecha}</p>
+          <p><strong>Éxito:</strong> ${mision.success ? "✅" : "❌"}</p>
+          <p><a href="${mision.webcast}" target="_blank">Ver Lanzamiento 🎥</a></p>
+        `;
+        lista.appendChild(li);
+      });
+    }
+
+    window.onload = cargarFavoritos;
+  </script>
+</body>
+</html>
