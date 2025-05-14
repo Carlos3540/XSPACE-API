@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">npm install @capacitor/android</string>
+    <string name="title_activity_main">npm install @capacitor/android</string>
+    <string name="package_name">com.carlos.xspace</string>
+    <string name="custom_url_scheme">com.carlos.xspace</string>
+</resources>

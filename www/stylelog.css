@@ -1,0 +1,141 @@
+/* Estilos para el sistema de autenticación */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #00acf0, #001b3f);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.form-panel {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.form-panel.hidden {
+    display: none;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #667eea;
+    outline: none;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #0ccaca, #009771);
+    border: none;
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    width: 100%;
+    padding: 12px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 15px;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.switch-form {
+    color: #667eea;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.form-message {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+    min-height: 20px;
+}
+
+.error-message {
+    color: #d32f2f;
+}
+
+.success-message {
+    color: #388e3c;
+}
+
+#welcome-panel {
+    text-align: center;
+}
+
+#welcomeMessage {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #555;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Autenticación</title>
+    <link rel="stylesheet" href="stylelog.css">
+</head>
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <!-- Formulario de Login -->
+            <div class="form-panel" id="login-panel">
+                <h2>Iniciar Sesión</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Correo Electrónico</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Contraseña</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Iniciar Sesión</button>
+                    <p class="form-message" id="loginMessage"></p>
+                </form>
+                <div class="form-footer">
+                    <p>¿No tienes una cuenta? <span class="switch-form" data-target="register">Regístrate</span></p>
+                </div>
+            </div>
+
+            <!-- Formulario de Registro -->
+            <div class="form-panel hidden" id="register-panel">
+                <h2>Crear Cuenta</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerName">Nombre</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Correo Electrónico</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Contraseña</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar Contraseña</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Registrarse</button>
+                    <p class="form-message" id="registerMessage"></p>
+                </form>
+                <div class="form-footer">
+                    <p>¿Ya tienes una cuenta? <span class="switch-form" data-target="login">Iniciar Sesión</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de Firebase -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-auth-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-firestore-compat.min.js"></script>
+    
+    <!-- Script de la aplicación -->
+    <script src="conexion.js"></script>
+</body>
+</html>
